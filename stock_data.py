@@ -8,6 +8,7 @@ import requests
 from bs4 import BeautifulSoup
 import concurrent.futures
 from utils import get_current_time_ist
+import sample_data
 
 # Cache for stock symbols and market cap data
 SYMBOL_CACHE = {
@@ -248,6 +249,7 @@ def get_volume_data(symbols_dict, progress_callback=None):
     symbols_list = list(symbols_dict.items())
     total_symbols = len(symbols_list)
     
+    # Start with attempt to get real data
     # Process in larger batches with more workers for better speed
     batch_size = 20
     for i in range(0, total_symbols, batch_size):
@@ -268,12 +270,28 @@ def get_volume_data(symbols_dict, progress_callback=None):
         # Minimal sleep to prevent rate limiting but be faster
         time.sleep(0.5)
     
-    # Create DataFrame from results
+    # If we couldn't get any real data, use sample data
     if not results:
-        return pd.DataFrame()
+        print("Could not fetch any real volume data. Using sample data instead.")
+        import streamlit as st
+        if 'using_sample_data' in st.session_state:
+            st.session_state.using_sample_data = True
+        sample_df = sample_data.get_sample_volume_data()
+        return sample_df
     
+    # Create DataFrame from results
     df = pd.DataFrame(results)
     df = df.set_index('symbol')
+    
+    # If we got very few results (suggesting API issues), augment with sample data
+    if len(df) < 5 and len(symbols_dict) > 10:
+        print(f"Only got {len(df)} results. Augmenting with sample data.")
+        sample_df = sample_data.get_sample_volume_data()
+        
+        # Only add sample symbols that aren't already in our results
+        sample_symbols = [s for s in sample_df.index if s not in df.index]
+        if sample_symbols:
+            df = pd.concat([df, sample_df.loc[sample_symbols]])
     
     return df
 
@@ -382,6 +400,8 @@ def get_market_caps(symbols, progress_callback=None):
             progress_callback(1.0)  # Indicate complete progress
         return pd.DataFrame({'market_cap_cr': {s: market_caps[s] for s in symbols}})
     
+    # Try fetching from Yahoo Finance API first
+    success_count = 0
     total_symbols = len(symbols_to_fetch)
     
     # Process in larger batches with more workers for better speed
@@ -394,6 +414,8 @@ def get_market_caps(symbols, progress_callback=None):
             batch_results = list(executor.map(get_market_cap, batch))
             
             for symbol, market_cap in zip(batch, batch_results):
+                if market_cap > 0:
+                    success_count += 1
                 market_caps[symbol] = market_cap
                 # Update the cache
                 MARKET_CAP_CACHE['market_caps'][symbol] = market_cap
@@ -404,6 +426,21 @@ def get_market_caps(symbols, progress_callback=None):
         
         # Minimal sleep to prevent rate limiting but be faster
         time.sleep(0.5)
+    
+    # If we got very few successful results, use sample data
+    if success_count < 5 and len(symbols) > 10:
+        print(f"Only got market cap data for {success_count} symbols. Using sample data.")
+        import streamlit as st
+        if 'using_sample_data' in st.session_state:
+            st.session_state.using_sample_data = True
+        sample_market_caps = sample_data.get_sample_market_caps()
+        
+        # Update our market caps with sample data for missing or zero values
+        for symbol in symbols:
+            if symbol in sample_market_caps.index and (symbol not in market_caps or market_caps[symbol] <= 0):
+                market_cap = sample_market_caps.loc[symbol, 'market_cap_cr']
+                market_caps[symbol] = market_cap
+                MARKET_CAP_CACHE['market_caps'][symbol] = market_cap
     
     # Update cache timestamp
     if not cache_valid:

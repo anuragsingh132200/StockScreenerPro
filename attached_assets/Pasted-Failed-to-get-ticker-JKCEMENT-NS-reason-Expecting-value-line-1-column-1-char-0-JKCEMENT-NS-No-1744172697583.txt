@@ -1,0 +1,220 @@
+Failed to get ticker 'JKCEMENT.NS' reason: Expecting value: line 1 column 1 (char 0)
+JKCEMENT.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JKPAPER.NS' reason: Expecting value: line 1 column 1 (char 0)
+JKPAPER.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JKIL.NS' reason: Expecting value: line 1 column 1 (char 0)
+Failed to get ticker 'JKTYRE.NS' reason: Expecting value: line 1 column 1 (char 0)
+JKIL.NS: No timezone found, symbol may be delisted
+JKTYRE.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JKLAKSHMI.NS' reason: Expecting value: line 1 column 1 (char 0)
+JKLAKSHMI.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JMFINANCIL.NS' reason: Expecting value: line 1 column 1 (char 0)
+Failed to get ticker 'JNKINDIA.NS' reason: Expecting value: line 1 column 1 (char 0)
+JMFINANCIL.NS: No timezone found, symbol may be delisted
+JNKINDIA.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JMA.NS' reason: Expecting value: line 1 column 1 (char 0)
+JMA.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JOCIL.NS' reason: Expecting value: line 1 column 1 (char 0)
+JOCIL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JLHL.NS' reason: Expecting value: line 1 column 1 (char 0)
+JLHL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JSL.NS' reason: Expecting value: line 1 column 1 (char 0)
+JSL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JPPOWER.NS' reason: Expecting value: line 1 column 1 (char 0)
+JPPOWER.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JSFB.NS' reason: Expecting value: line 1 column 1 (char 0)
+JSFB.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JPASSOCIAT.NS' reason: Expecting value: line 1 column 1 (char 0)
+JPASSOCIAT.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JPOLYINVST.NS' reason: Expecting value: line 1 column 1 (char 0)
+JPOLYINVST.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JSWENERGY.NS' reason: Expecting value: line 1 column 1 (char 0)
+JSWENERGY.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JSWHL.NS' reason: Expecting value: line 1 column 1 (char 0)
+JSWHL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JSWSTEEL.NS' reason: Expecting value: line 1 column 1 (char 0)
+JSWSTEEL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JSWINFRA.NS' reason: Expecting value: line 1 column 1 (char 0)
+JSWINFRA.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JTEKTINDIA.NS' reason: Expecting value: line 1 column 1 (char 0)
+JTEKTINDIA.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JUBLFOOD.NS' reason: Expecting value: line 1 column 1 (char 0)
+JUBLFOOD.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JTLIND.NS' reason: Expecting value: line 1 column 1 (char 0)
+JTLIND.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JUBLCPL.NS' reason: Expecting value: line 1 column 1 (char 0)
+JUBLCPL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JUBLPHARMA.NS' reason: Expecting value: line 1 column 1 (char 0)
+JUBLPHARMA.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JUBLINGREA.NS' reason: Expecting value: line 1 column 1 (char 0)
+JUBLINGREA.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JUNIPER.NS' reason: Expecting value: line 1 column 1 (char 0)
+JUNIPER.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JYOTICNC.NS' reason: Expecting value: line 1 column 1 (char 0)
+JYOTICNC.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JUSTDIAL.NS' reason: Expecting value: line 1 column 1 (char 0)
+JUSTDIAL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JWL.NS' reason: Expecting value: line 1 column 1 (char 0)
+JWL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JYOTHYLAB.NS' reason: Expecting value: line 1 column 1 (char 0)
+JYOTHYLAB.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'JYOTISTRUC.NS' reason: Expecting value: line 1 column 1 (char 0)
+JYOTISTRUC.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KABRAEXTRU.NS' reason: Expecting value: line 1 column 1 (char 0)
+KABRAEXTRU.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KAJARIACER.NS' reason: Expecting value: line 1 column 1 (char 0)
+KAJARIACER.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KALAMANDIR.NS' reason: Expecting value: line 1 column 1 (char 0)
+KALAMANDIR.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KAKATCEM.NS' reason: Expecting value: line 1 column 1 (char 0)
+KAKATCEM.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KALYANI.NS' reason: Expecting value: line 1 column 1 (char 0)
+KALYANI.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KALYANIFRG.NS' reason: Expecting value: line 1 column 1 (char 0)
+KALYANIFRG.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KAMATHOTEL.NS' reason: Expecting value: line 1 column 1 (char 0)
+Failed to get ticker 'KAMDHENU.NS' reason: Expecting value: line 1 column 1 (char 0)
+KAMATHOTEL.NS: No timezone found, symbol may be delisted
+KAMDHENU.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KALYANKJIL.NS' reason: Expecting value: line 1 column 1 (char 0)
+KALYANKJIL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KANPRPLA.NS' reason: Expecting value: line 1 column 1 (char 0)
+KANPRPLA.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KANSAINER.NS' reason: Expecting value: line 1 column 1 (char 0)
+KANSAINER.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KAMOPAINTS.NS' reason: Expecting value: line 1 column 1 (char 0)
+KAMOPAINTS.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KANORICHEM.NS' reason: Expecting value: line 1 column 1 (char 0)
+KANORICHEM.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KANANIIND.NS' reason: Expecting value: line 1 column 1 (char 0)
+KANANIIND.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KAPSTON.NS' reason: Expecting value: line 1 column 1 (char 0)
+KAPSTON.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KARMAENG.NS' reason: Expecting value: line 1 column 1 (char 0)
+KARMAENG.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KAUSHALYA.NS' reason: Expecting value: line 1 column 1 (char 0)
+KAUSHALYA.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KAVVERITEL.NS' reason: Expecting value: line 1 column 1 (char 0)
+KAVVERITEL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KARURVYSYA.NS' reason: Expecting value: line 1 column 1 (char 0)
+KARURVYSYA.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KAYNES.NS' reason: Expecting value: line 1 column 1 (char 0)
+KAYNES.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KCPSUGIND.NS' reason: Expecting value: line 1 column 1 (char 0)
+Failed to get ticker 'KAYA.NS' reason: Expecting value: line 1 column 1 (char 0)
+KAYA.NS: No timezone found, symbol may be delisted
+KCPSUGIND.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KBCGLOBAL.NS' reason: Expecting value: line 1 column 1 (char 0)
+KBCGLOBAL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KCP.NS' reason: Expecting value: line 1 column 1 (char 0)
+KCP.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KDDL.NS' reason: Expecting value: line 1 column 1 (char 0)
+KDDL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KEEPLEARN.NS' reason: Expecting value: line 1 column 1 (char 0)
+KEEPLEARN.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KECL.NS' reason: Expecting value: line 1 column 1 (char 0)
+KECL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KEI.NS' reason: Expecting value: line 1 column 1 (char 0)
+KEI.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KEC.NS' reason: Expecting value: line 1 column 1 (char 0)
+KEC.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KERNEX.NS' reason: Expecting value: line 1 column 1 (char 0)
+KERNEX.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KELLTONTEC.NS' reason: Expecting value: line 1 column 1 (char 0)
+KELLTONTEC.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KESORAMIND.NS' reason: Expecting value: line 1 column 1 (char 0)
+KESORAMIND.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KEYFINSERV.NS' reason: Expecting value: line 1 column 1 (char 0)
+KEYFINSERV.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KFINTECH.NS' reason: Expecting value: line 1 column 1 (char 0)
+KFINTECH.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KHAICHEM.NS' reason: Expecting value: line 1 column 1 (char 0)
+KHAICHEM.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KHADIM.NS' reason: Expecting value: line 1 column 1 (char 0)
+KHADIM.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KHAITANLTD.NS' reason: Expecting value: line 1 column 1 (char 0)
+KHAITANLTD.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KHANDSE.NS' reason: Expecting value: line 1 column 1 (char 0)
+KHANDSE.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KICL.NS' reason: Expecting value: line 1 column 1 (char 0)
+KICL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KILITCH.NS' reason: Expecting value: line 1 column 1 (char 0)
+KILITCH.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KIMS.NS' reason: Expecting value: line 1 column 1 (char 0)
+KIMS.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KIOCL.NS' reason: Expecting value: line 1 column 1 (char 0)
+KIOCL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KIRIINDUS.NS' reason: Expecting value: line 1 column 1 (char 0)
+KIRIINDUS.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KINGFA.NS' reason: Expecting value: line 1 column 1 (char 0)
+KINGFA.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KIRLOSBROS.NS' reason: Expecting value: line 1 column 1 (char 0)
+KIRLOSBROS.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KIRLPNU.NS' reason: Expecting value: line 1 column 1 (char 0)
+KIRLPNU.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KIRLOSIND.NS' reason: Expecting value: line 1 column 1 (char 0)
+KIRLOSIND.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KITEX.NS' reason: Expecting value: line 1 column 1 (char 0)
+KITEX.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KIRLOSENG.NS' reason: Expecting value: line 1 column 1 (char 0)
+KIRLOSENG.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KMEW.NS' reason: Expecting value: line 1 column 1 (char 0)
+KMEW.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KNRCON.NS' reason: Expecting value: line 1 column 1 (char 0)
+KNRCON.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KOHINOOR.NS' reason: Expecting value: line 1 column 1 (char 0)
+KOHINOOR.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KKCL.NS' reason: Expecting value: line 1 column 1 (char 0)
+KKCL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KMSUGAR.NS' reason: Expecting value: line 1 column 1 (char 0)
+KMSUGAR.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KOKUYOCMLN.NS' reason: Expecting value: line 1 column 1 (char 0)
+KOKUYOCMLN.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KOPRAN.NS' reason: Expecting value: line 1 column 1 (char 0)
+KOPRAN.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KOLTEPATIL.NS' reason: Expecting value: line 1 column 1 (char 0)
+KOLTEPATIL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KOTARISUG.NS' reason: Expecting value: line 1 column 1 (char 0)
+KOTARISUG.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KOTAKBANK.NS' reason: Expecting value: line 1 column 1 (char 0)
+KOTAKBANK.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KOTHARIPET.NS' reason: Expecting value: line 1 column 1 (char 0)
+KOTHARIPET.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KPIL.NS' reason: Expecting value: line 1 column 1 (char 0)
+KPIL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KPIGREEN.NS' reason: Expecting value: line 1 column 1 (char 0)
+KPIGREEN.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KPEL.NS' reason: Expecting value: line 1 column 1 (char 0)
+Failed to get ticker 'KOTHARIPRO.NS' reason: Expecting value: line 1 column 1 (char 0)
+KPEL.NS: No timezone found, symbol may be delisted
+KOTHARIPRO.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KPRMILL.NS' reason: Expecting value: line 1 column 1 (char 0)
+KPRMILL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KPITTECH.NS' reason: Expecting value: line 1 column 1 (char 0)
+KPITTECH.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KRIDHANINF.NS' reason: Expecting value: line 1 column 1 (char 0)
+KRIDHANINF.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KRBL.NS' reason: Expecting value: line 1 column 1 (char 0)
+KRBL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KREBSBIO.NS' reason: Expecting value: line 1 column 1 (char 0)
+KREBSBIO.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KRITI.NS' reason: Expecting value: line 1 column 1 (char 0)
+KRITI.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KRITINUT.NS' reason: Expecting value: line 1 column 1 (char 0)
+KRITINUT.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KRISHANA.NS' reason: Expecting value: line 1 column 1 (char 0)
+KRISHANA.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KRN.NS' reason: Expecting value: line 1 column 1 (char 0)
+KRN.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KRITIKA.NS' reason: Expecting value: line 1 column 1 (char 0)
+KRITIKA.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KRONOX.NS' reason: Expecting value: line 1 column 1 (char 0)
+KRONOX.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KRYSTAL.NS' reason: Expecting value: line 1 column 1 (char 0)
+KRYSTAL.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KROSS.NS' reason: Expecting value: line 1 column 1 (char 0)
+KROSS.NS: No timezone found, symbol may be delisted
+Failed to get ticker 'KRSNAA.NS' reason: Expecting value: line 1 column 1 (char 0)
+Failed to get ticker 'KSB.NS' reason: Expecting value: line 1 column 1 (char 0)
+KRSNAA.NS: No timezone found, symbol may be delisted
+KSB.NS: No timezone found, symbol may be delisted

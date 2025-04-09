@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 import pytz
 from stock_data import get_volume_data, get_market_caps, get_nse_bse_symbols
 from utils import is_market_open, get_current_time_ist, format_market_cap
+import sample_data
 
 # Set page config
 st.set_page_config(
@@ -30,6 +31,9 @@ if 'last_update_time' not in st.session_state:
 
 if 'symbols' not in st.session_state:
     st.session_state.symbols = None
+    
+if 'using_sample_data' not in st.session_state:
+    st.session_state.using_sample_data = False
 
 
 def load_and_filter_stocks():
@@ -132,6 +136,17 @@ if not st.session_state.filtered_stocks.empty:
     
     if st.session_state.last_update_time:
         st.write(f"Last updated: {st.session_state.last_update_time.strftime('%Y-%m-%d %H:%M:%S')} IST")
+    
+    # Show warning if using sample data
+    if st.session_state.using_sample_data:
+        st.warning("""
+        ⚠️ **Using sample data due to Yahoo Finance API issues.**  
+        The displayed results are for demonstration purposes only and do not reflect current market conditions.
+        Yahoo Finance API is experiencing connection issues. Please try again later for real-time data.
+        """)
+    
+    # Reset the sample data flag for next refresh
+    st.session_state.using_sample_data = False
     
     # Rename columns for display
     display_df = st.session_state.filtered_stocks.reset_index().rename(columns={

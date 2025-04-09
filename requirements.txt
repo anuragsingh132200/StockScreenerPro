@@ -5,3 +5,4 @@ pytz==2023.3
 requests==2.31.0
 streamlit==1.27.2
 yfinance==0.2.31
+trafilatura
