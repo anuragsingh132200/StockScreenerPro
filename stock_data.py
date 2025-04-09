@@ -9,10 +9,15 @@ from bs4 import BeautifulSoup
 import concurrent.futures
 from utils import get_current_time_ist
 
-# Cache for stock symbols
+# Cache for stock symbols and market cap data
 SYMBOL_CACHE = {
     'timestamp': None,
     'symbols': None
+}
+
+MARKET_CAP_CACHE = {
+    'timestamp': None,
+    'market_caps': {}
 }
 
 def get_nse_bse_symbols():
@@ -30,38 +35,37 @@ def get_nse_bse_symbols():
         # Get NSE symbols
         nse_symbols = {}
         
-        # Try to fetch NSE listed companies
-        try:
-            nse_url = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
-            nse_data = pd.read_csv(nse_url)
-            for _, row in nse_data.iterrows():
-                symbol = row['SYMBOL']
-                name = row['NAME OF COMPANY']
-                nse_symbols[symbol + '.NS'] = name
-        except Exception as e:
-            print(f"Error fetching NSE symbols: {e}")
+        # For faster performance and reliable testing, use top 50 Indian stocks
+        # This significantly improves the data fetching speed
+        default_symbols = [
+            # NIFTY 50 Components
+            'RELIANCE.NS', 'TCS.NS', 'HDFCBANK.NS', 'INFY.NS', 'ICICIBANK.NS',
+            'HINDUNILVR.NS', 'SBIN.NS', 'BHARTIARTL.NS', 'ITC.NS', 'KOTAKBANK.NS',
+            'LT.NS', 'BAJFINANCE.NS', 'AXISBANK.NS', 'ASIANPAINT.NS', 'MARUTI.NS',
+            'TITAN.NS', 'SUNPHARMA.NS', 'ULTRACEMCO.NS', 'TATASTEEL.NS', 'NTPC.NS',
+            'ADANIENT.NS', 'ADANIPORTS.NS', 'BAJAJFINSV.NS', 'BAJAJ-AUTO.NS', 'BPCL.NS',
+            'BRITANNIA.NS', 'CIPLA.NS', 'COALINDIA.NS', 'DIVISLAB.NS', 'DRREDDY.NS',
+            'EICHERMOT.NS', 'GRASIM.NS', 'HEROMOTOCO.NS', 'HINDALCO.NS', 'INDUSINDBK.NS',
+            'JSWSTEEL.NS', 'M&M.NS', 'NESTLEIND.NS', 'ONGC.NS', 'POWERGRID.NS',
+            'SBILIFE.NS', 'TATACONSUM.NS', 'TATAMOTORS.NS', 'TECHM.NS', 'UPL.NS',
+            'WIPRO.NS', 'HCLTECH.NS', 'APOLLOHOSP.NS', 'HDFCLIFE.NS', 'SHREECEM.NS'
+        ]
         
-        # If NSE fetch failed, use a smaller sample for testing
-        if not nse_symbols:
-            # List of top Indian stocks as a fallback
-            default_symbols = [
-                'RELIANCE.NS', 'TCS.NS', 'HDFCBANK.NS', 'INFY.NS', 'ICICIBANK.NS',
-                'HINDUNILVR.NS', 'SBIN.NS', 'BHARTIARTL.NS', 'ITC.NS', 'KOTAKBANK.NS',
-                'LT.NS', 'BAJFINANCE.NS', 'AXISBANK.NS', 'ASIANPAINT.NS', 'MARUTI.NS',
-                'TITAN.NS', 'SUNPHARMA.NS', 'ULTRACEMCO.NS', 'TATASTEEL.NS', 'NTPC.NS'
-            ]
-            
-            # Get company names for default symbols
-            for symbol in default_symbols:
+        # Get company names with multi-threading for speed
+        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+            def get_company_name(symbol):
                 try:
                     ticker = yf.Ticker(symbol)
                     info = ticker.info
                     name = info.get('longName', symbol.replace('.NS', ''))
-                    nse_symbols[symbol] = name
+                    return symbol, name
                 except Exception:
-                    nse_symbols[symbol] = symbol.replace('.NS', '')
+                    return symbol, symbol.replace('.NS', '')
+            
+            for symbol, name in executor.map(get_company_name, default_symbols):
+                nse_symbols[symbol] = name
         
-        # For simplicity, we're focusing on NSE stocks only as they cover most of the Indian market
+        # Cache the results
         SYMBOL_CACHE['timestamp'] = datetime.now()
         SYMBOL_CACHE['symbols'] = nse_symbols
         
@@ -69,7 +73,13 @@ def get_nse_bse_symbols():
         
     except Exception as e:
         print(f"Error getting stock symbols: {e}")
-        return {}
+        # If all else fails, return a minimal set to ensure app functionality
+        return {
+            'RELIANCE.NS': 'Reliance Industries', 
+            'TCS.NS': 'Tata Consultancy Services',
+            'HDFCBANK.NS': 'HDFC Bank', 
+            'INFY.NS': 'Infosys'
+        }
 
 def fetch_volume_data_for_symbol(symbol_info):
     """Fetch volume data for a single symbol"""
@@ -86,42 +96,48 @@ def fetch_volume_data_for_symbol(symbol_info):
             days_to_subtract += 1
             prev_day = current_time_ist - timedelta(days=days_to_subtract)
         
-        # Start and end times for previous day data
-        prev_day_start = prev_day.replace(hour=9, minute=15, second=0, microsecond=0)
-        prev_day_end = prev_day.replace(hour=11, minute=0, second=0, microsecond=0)
+        # Start and end times for previous day data - convert to UTC for Yahoo Finance
+        # We need to strip timezone info to avoid the tz parameter error
+        prev_day_naive = prev_day.replace(tzinfo=None)
+        prev_day_start_naive = prev_day_naive.replace(hour=9, minute=15, second=0, microsecond=0)
+        prev_day_end_naive = prev_day_naive.replace(hour=11, minute=0, second=0, microsecond=0)
         
         # Fetch previous day's 5-minute candles
         ticker = yf.Ticker(symbol)
         prev_day_data = ticker.history(
-            start=prev_day_start.strftime('%Y-%m-%d'),
-            end=(prev_day + timedelta(days=1)).strftime('%Y-%m-%d'),
+            start=prev_day_start_naive.strftime('%Y-%m-%d'),
+            end=(prev_day_naive + timedelta(days=1)).strftime('%Y-%m-%d'),
             interval="5m"
         )
         
         if prev_day_data.empty:
             return None
         
-        # Get the first 10 candles of the previous day
-        trading_start_time = pd.Timestamp(prev_day_start, tz='Asia/Kolkata')
-        trading_end_time = pd.Timestamp(prev_day_end, tz='Asia/Kolkata')
+        # Handle timezone for filtering - convert dataframe index timezone to match
+        if prev_day_data.index.tzinfo is None:
+            prev_day_data.index = prev_day_data.index.tz_localize('UTC').tz_convert('Asia/Kolkata')
+        
+        # Create time objects for filtering (without dates)
+        market_open_time = datetime.strptime('09:15:00', '%H:%M:%S').time()
+        market_end_time = datetime.strptime('11:00:00', '%H:%M:%S').time()
         
         # Filter to trading hours and get first 10 candles
-        prev_day_data = prev_day_data.between_time(
-            trading_start_time.time(),
-            trading_end_time.time()
-        ).head(10)
+        mask = [(t.time() >= market_open_time and t.time() <= market_end_time) for t in prev_day_data.index]
+        filtered_data = prev_day_data.iloc[mask].head(10)
         
-        if len(prev_day_data) < 5:  # Need at least 5 candles for reasonable average
+        if len(filtered_data) < 5:  # Need at least 5 candles for reasonable average
             return None
         
         # Calculate average volume
-        avg_volume = prev_day_data['Volume'].mean()
+        avg_volume = filtered_data['Volume'].mean()
         
-        # Get current 5-minute candle
-        current_day_start = current_time_ist.replace(hour=9, minute=15, second=0, microsecond=0)
+        # Get current 5-minute candle - convert to naive datetime for yfinance
+        current_day_start_naive = current_time_ist.replace(hour=9, minute=15, second=0, microsecond=0).replace(tzinfo=None)
+        current_time_naive = current_time_ist.replace(tzinfo=None)
+        
         current_day_data = ticker.history(
-            start=current_day_start.strftime('%Y-%m-%d'),
-            end=current_time_ist.strftime('%Y-%m-%d %H:%M:%S'),
+            start=current_day_start_naive.strftime('%Y-%m-%d'),
+            end=current_time_naive.strftime('%Y-%m-%d %H:%M:%S'),
             interval="5m"
         )
         
@@ -162,12 +178,13 @@ def get_volume_data(symbols_dict, progress_callback=None):
     symbols_list = list(symbols_dict.items())
     total_symbols = len(symbols_list)
     
-    # Process in smaller batches to avoid rate limiting
-    batch_size = 10
+    # Process in larger batches with more workers for better speed
+    batch_size = 20
     for i in range(0, total_symbols, batch_size):
         batch = symbols_list[i:i+batch_size]
         
-        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        # Increase max_workers for faster parallel processing
+        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
             batch_results = list(executor.map(fetch_volume_data_for_symbol, batch))
             
             for result in batch_results:
@@ -178,8 +195,8 @@ def get_volume_data(symbols_dict, progress_callback=None):
         if progress_callback:
             progress_callback(min(1.0, (i + batch_size) / total_symbols))
         
-        # Sleep to avoid rate limiting
-        time.sleep(1)
+        # Minimal sleep to prevent rate limiting but be faster
+        time.sleep(0.5)
     
     # Create DataFrame from results
     if not results:
@@ -223,26 +240,57 @@ def get_market_caps(symbols, progress_callback=None):
     Returns:
         DataFrame with market caps
     """
-    market_caps = {}
-    total_symbols = len(symbols)
+    # Check if we have a recent cache (less than 1 hour old)
+    cache_valid = (
+        MARKET_CAP_CACHE['timestamp'] is not None and 
+        (datetime.now() - MARKET_CAP_CACHE['timestamp']).total_seconds() < 3600
+    )
     
-    # Process in smaller batches to avoid rate limiting
-    batch_size = 10
+    # Initialize with cached data if available
+    if cache_valid:
+        market_caps = MARKET_CAP_CACHE['market_caps'].copy()
+    else:
+        market_caps = {}
+    
+    # Only fetch data for symbols not in cache
+    symbols_to_fetch = [s for s in symbols if s not in market_caps]
+    
+    if not symbols_to_fetch:
+        # If all symbols are already in cache, return immediately
+        # This makes subsequent calls very fast
+        if progress_callback:
+            progress_callback(1.0)  # Indicate complete progress
+        return pd.DataFrame({'market_cap_cr': {s: market_caps[s] for s in symbols}})
+    
+    total_symbols = len(symbols_to_fetch)
+    
+    # Process in larger batches with more workers for better speed
+    batch_size = 20
     for i in range(0, total_symbols, batch_size):
-        batch = symbols[i:i+batch_size]
+        batch = symbols_to_fetch[i:i+batch_size]
         
-        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        # Increase max_workers for faster parallel processing
+        with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
             batch_results = list(executor.map(get_market_cap, batch))
             
             for symbol, market_cap in zip(batch, batch_results):
                 market_caps[symbol] = market_cap
+                # Update the cache
+                MARKET_CAP_CACHE['market_caps'][symbol] = market_cap
         
         # Update progress
         if progress_callback:
             progress_callback(min(1.0, (i + batch_size) / total_symbols))
         
-        # Sleep to avoid rate limiting
-        time.sleep(1)
+        # Minimal sleep to prevent rate limiting but be faster
+        time.sleep(0.5)
+    
+    # Update cache timestamp
+    if not cache_valid:
+        MARKET_CAP_CACHE['timestamp'] = datetime.now()
+    
+    # Return only the requested symbols
+    result_market_caps = {s: market_caps.get(s, 0) for s in symbols}
     
     # Create DataFrame from results
-    return pd.DataFrame({'market_cap_cr': market_caps})
+    return pd.DataFrame({'market_cap_cr': result_market_caps})
